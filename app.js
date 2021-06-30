@@ -28,6 +28,21 @@ app.locals.title = `${capitalized(projectName)}- Generated with IronGenerator`;
 const index = require("./routes/index");
 app.use("/", index);
 
+const celebrities = require("./routes/celebrities");
+app.use("/", celebrities);
+
+const movies = require("./routes/movies");
+app.use("/", movies);
+
+hbs.registerHelper('selector', function (movie) {
+  // const selected = movie.cast.map(actor => actor._id).includes(this._id) ? 'selected' : '';
+  let selected = '';
+  if (movie.cast.map(actor => actor._id).includes(this._id)) {
+    selected = 'selected';
+  }
+  return '<option value="' + this._id + '" ' + selected + '>' + this.name + '</option>';
+});
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

@@ -1,0 +1,11 @@
+{{#with show}}
+  <h2>Details for {{name}}</h2>
+  <p>Occupation: {{occupation}}</p>
+  <p>catch Phrase: {{catchPhrase}}</p>
+  <form action="/celebrities/{{_id}}/delete" method="POST">
+    <button type="submit">Delete this celebrity</button>
+  </form>
+  <form action="/celebrities/{{_id}}/edit" method="GET">
+    <button type="submit">Edit this celebrity</button>
+  </form>
+{{/with}}
